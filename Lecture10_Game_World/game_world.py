@@ -1,6 +1,8 @@
 # layer 0 : Background object
-# layer 1 : Foreground object
-world = [[], []] # 게임내 객체들을 담는 리스트
+# layer 1 : player object
+# layer 2 : Foreground object
+
+world = [[], [], []] # 게임내 객체들을 담는 리스트
 
 def add_object(o, depth = 0):
     world[depth].append(o)
