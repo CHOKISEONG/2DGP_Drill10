@@ -20,8 +20,10 @@ def handle_events():
 def reset_world():
     global boy
 
-    grass = Grass()
-    game_world.add_object(grass, 0)
+    back_grass = Grass()
+    game_world.add_object(back_grass, 0)
+    fore_grass = Grass(0,-20)
+    game_world.add_object(fore_grass, 2)
     boy = Boy()
     game_world.add_object(boy, 1)
 
