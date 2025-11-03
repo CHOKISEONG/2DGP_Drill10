@@ -17,22 +17,26 @@ class Bird:
         self.x, self.y = x, y
         self.width, self.height = 183,169
         self.my_width, self.my_height = 50, 50
+        self.speed = 10 # 새의 속도는 1초에 10
         self.frame = 0
-        #self.xv = throwing_speed * math.cos(math.radians(throwing_angle))
-        #self.yv = abs(throwing_speed * math.sin(math.radians(throwing_angle)))
+        self.theta = 0
 
     def draw(self):
         if self.face_dir == 1: #오른쪽 방향
             print(int(self.frame) // 5)
-            self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169,0,'not flip',self.x, self.y, self.my_width, self.my_height)
+            self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169
+                                           ,0,'not flip',self.x, self.y, self.my_width, self.my_height)
         else:
-            self.image.clip_composite_draw(0, 0, 183, 169, 0, 'v', self.x, self.y, self.my_width, self.my_height)
+            self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169
+                                           ,0,'h',self.x, self.y, self.my_width, self.my_height)
 
     def update(self):
         #self.yv -= GRAVITY * game_framework.frame_time  # m/s
         #self.x += self.xv * game_framework.frame_time * PIXEL_PER_METER
         #self.y += self.yv * game_framework.frame_time * PIXEL_PER_METER
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 14
-        if self.y < 60:
-            game_world.remove_object(self)
+        self.x += self.speed * game_framework.frame_time * PIXEL_PER_METER
+
+
+
 
