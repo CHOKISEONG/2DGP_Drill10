@@ -1,7 +1,6 @@
 from pico2d import *
 import game_world
 import game_framework
-from random import randint
 
 PIXEL_PER_METER = (1.0 / 0.03)  # 1pixel = 3cm, 1m = 33.33 pixel
 ACTION_PER_TIME = 1
@@ -10,7 +9,7 @@ FRAMES_PER_ACTION = 14
 class Bird:
     image = None
 
-    def __init__(self, x = randint(50,200), y = randint(200,400)):
+    def __init__(self, x = 400, y = 300):
         if Bird.image == None:
             Bird.image = load_image('bird_animation.png')
         self.face_dir = 1
