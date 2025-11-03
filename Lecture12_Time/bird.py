@@ -11,13 +11,19 @@ class Bird:
     def __init__(self, x = 400, y = 300):
         if Bird.image == None:
             Bird.image = load_image('bird_animation.png')
+        self.face_dir = 1
         self.x, self.y = x, y
         self.width, self.height = 183,169
+        self.my_width, self.my_height = 50, 50
         #self.xv = throwing_speed * math.cos(math.radians(throwing_angle))
         #self.yv = abs(throwing_speed * math.sin(math.radians(throwing_angle)))
 
     def draw(self):
-        self.image.clip_composite_draw(0,0, 183, 169,0,'none',self.x, self.y)
+        if self.face_dir == 1: #오른쪽 방향
+            print('right dir')
+            self.image.clip_composite_draw(0,0, 183, 169,0,'not flip',self.x, self.y, self.my_width, self.my_height)
+        else:
+            self.image.clip_composite_draw(0, 0, 183, 169, 0, 'v', self.x, self.y, self.my_width, self.my_height)
 
     def update(self):
         #self.yv -= GRAVITY * game_framework.frame_time  # m/s
