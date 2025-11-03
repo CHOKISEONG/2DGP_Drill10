@@ -23,17 +23,13 @@ class Bird:
 
     def draw(self):
         if self.face_dir == 1: #오른쪽 방향
-            print(int(self.frame) // 5)
             self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169
-                                           ,self.theta / 2,'not flip',self.x, self.y, self.my_width, self.my_height)
+                                           ,self.theta / 3,'not flip',self.x, self.y + (10 * self.theta), self.my_width, self.my_height)
         else:
             self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169
-                                           ,self.theta / 2,'h',self.x, self.y, self.my_width, self.my_height)
+                                           ,self.theta / 3,'h',self.x, self.y + (10 * self.theta), self.my_width, self.my_height)
 
     def update(self):
-        #self.yv -= GRAVITY * game_framework.frame_time  # m/s
-        #self.x += self.xv * game_framework.frame_time * PIXEL_PER_METER
-        #self.y += self.yv * game_framework.frame_time * PIXEL_PER_METER
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 14
         self.theta = math.sin(math.radians(self.x))
         print(self.theta)
