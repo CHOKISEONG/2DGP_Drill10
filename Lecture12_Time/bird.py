@@ -17,7 +17,7 @@ class Bird:
         #self.yv = abs(throwing_speed * math.sin(math.radians(throwing_angle)))
 
     def draw(self):
-        self.image.clip_composite_draw(0,0, 183, 169,0,0,x,y)
+        self.image.clip_composite_draw(0,0, 183, 169,0,'none',self.x, self.y)
 
     def update(self):
         #self.yv -= GRAVITY * game_framework.frame_time  # m/s
