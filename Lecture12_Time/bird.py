@@ -36,7 +36,9 @@ class Bird:
         #self.y += self.yv * game_framework.frame_time * PIXEL_PER_METER
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 14
         self.x += self.speed * game_framework.frame_time * PIXEL_PER_METER
-
+        if self.x > 1500 or self.x < 30:
+            self.speed = -self.speed
+            self.face_dir = -self.face_dir
 
 
 
