@@ -15,7 +15,6 @@ class Bird:
         self.face_dir = 1
         self.x, self.y = x, y
         self.width, self.height = 183,169
-        self.my_width, self.my_height = 50, 50
         self.speed = 10 # 새의 속도는 1초에 10
         self.frame = 0
         self.theta = 0
@@ -23,10 +22,10 @@ class Bird:
     def draw(self):
         if self.face_dir == 1: #오른쪽 방향
             self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169
-                                           ,self.theta / 3,'not flip',self.x, self.y + (10 * self.theta), self.my_width, self.my_height)
+                                           ,self.theta / 3,'not flip',self.x, self.y + (10 * self.theta), 50, 50)
         else:
             self.image.clip_composite_draw((int(self.frame) % 5) * 183 ,(2 - int(self.frame) // 5) * 169, 183, 169
-                                           ,self.theta / 3,'h',self.x, self.y + (10 * self.theta), self.my_width, self.my_height)
+                                           ,self.theta / 3,'h',self.x, self.y + (10 * self.theta), 50, 50)
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 14
